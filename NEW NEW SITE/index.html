@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunlit Life - Photography & Design</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!--<canvas id="gradient-canvas"></canvas>-->
+    <div id="gradient-container"></div>
+    <header>
+        <nav>
+            <a href="#home" class="logo">Sunlit Life</a>
+            <div class="nav-links">
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Sunlit Life</h1>
+            <div class="services">
+                <p class="service-item">Photo Retouching</p>
+                <p class="service-item">Photography</p>
+                <p class="service-item">Graphic Design</p>
+            </div>
+            <a href="#portfolio" class="cta-button">View Our Work</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sunlit Life. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <script src="js/gradientNoise.js"></script>
+    <script src="js/main.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.151.3/build/three.module.js",
+            "@react-three/fiber": "https://unpkg.com/@react-three/fiber@8.13.0/dist/react-three-fiber.cjs.production.min.js",
+            "@react-spring/three": "https://unpkg.com/@react-spring/three@9.7.2/dist/react-spring-three.cjs.production.min.js",
+            "@react-three/drei": "https://unpkg.com/@react-three/drei@9.68.3/index.cjs.js",
+            "shadergradient": "https://esm-shadergradient.onrender.com/without-store.mjs"
+          }
+        }
+        </script>
+        <script type="module" src="js/your-script.js"></script>
+</body>
+</html>
