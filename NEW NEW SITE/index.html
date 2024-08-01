@@ -3,74 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunlit Life - Photography & Design</title>
+    <title>Sunlit Life</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://twgljs.org/dist/4.x/twgl-full.min.js"></script>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
     <header>
+        <h1>Sunlit Life</h1>
+        <h2>Make your designs alive.</h2>
         <nav>
-            <a href="#home" class="logo">Sunlit Life</a>
-            <div class="nav-links">
-                <a href="#portfolio">Portfolio</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+            <div id="menu-container">
+                <div id="menu-button">Menu</div>
+                <ul id="menu">
+                    <li data-filter="all">All</li>
+                    <li data-filter="retouch">Photo Retouching</li>
+                    <li data-filter="photography">Photography</li>
+                    <li data-filter="design">Graphic Design</li>
+                </ul>
             </div>
         </nav>
     </header>
-
     <main>
-        <section id="home" class="hero">
-            <h1>Sunlit Life</h1>
-            <div class="services">
-                <p class="service-item">Photo Retouching</p>
-                <p class="service-item">Photography</p>
-                <p class="service-item">Graphic Design</p>
-            </div>
-            <a href="#portfolio" class="cta-button">View Our Work</a>
-        </section>
+        <div id="portfolio-grid"></div>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Sunlit Life. All rights reserved.</p>
-    </footer>
-
-    <script id="vert-shader" type="x-shader/x-vertex">
-        #version 300 es
-        in vec4 position;
-        void main() {
-            gl_Position = position;
-        }
-    </script>
-
-    <script id="frag-shader" type="x-shader/x-fragment">
-        #version 300 es
-        precision highp float;
-        uniform float iTime;
-        uniform vec2 iResolution;
-        out vec4 fragColor;
-    
-        void main() {
-            vec2 uv = gl_FragCoord.xy / iResolution.xy;
-            
-            // Define our colors
-            vec3 white = vec3(1.0, 1.0, 1.0);
-            vec3 orange = vec3(1.0, 0.65, 0.0);
-    
-            // Create a moving gradient
-            float t = sin(iTime * 0.1 + uv.x * 3.14) * 0.5 + 1.5;
-            
-            // Use smoothstep for a smoother transition
-            float gradient = smoothstep(0.0, 1.0, uv.x + t * 0.9);
-            
-            // Mix colors
-            vec3 color = mix(white, orange, gradient);
-    
-            fragColor = vec4(color, 1.0);
-        }
-    </script>
-
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <img id="modal-image" src="" alt="Enlarged portfolio item">
+        </div>
+    </div>
+    <script src="assets/portfolio_items/items.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
