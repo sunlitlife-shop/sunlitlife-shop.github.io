@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <base href="#contact">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunlit Life | Booking</title>
+    <link rel="stylesheet" href="./css/contact-style.css">
+</head>
+<body>
+    <header>
+        <h1 class="japanese">SUNLIT LIFE</h1>
+        <h1 class="english">SUNLIT LIFE</h1>
+        <p class="japanese">プロフェッショナルな美しさを引き出す</p>
+        <p class="english">Bringing out professional beauty</p>
+        <button class="toggle-btn">English / 日本語</button>
+    </header>
+
+    <main>
+        <section id="contact">
+          <h2 class="japanese">お問い合わせ</h2>
+          <h2 class="english">BOOKING</h2>
+          <div class="contact-form">
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name" class="japanese">お名前</label>
+                <label for="name" class="english">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email" class="japanese">メールアドレス</label>
+                <label for="email" class="english">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="service" class="japanese">ご希望のサービス</label>
+                <label for="service" class="english">Service Required</label>
+                <div class="custom-select-wrapper">
+                  <select id="service" name="service" class="custom-select" required>
+                    <option value="" class="english">Please select</option>
+                    <option value="" class="japanese">選択してください</option>
+                    
+                    <option value="portrait" class="japanese">ポートレートレタッチ</option>
+                    <option value="portrait" class="english">Portrait Retouch</option>
+                    <option value="wedding" class="japanese">ウェディングフォトレタッチ</option>
+                    <option value="wedding" class="english">Wedding Photo Retouch</option>
+                    <option value="fashion" class="japanese">ファッションフォトレタッチ</option>
+                    <option value="fashion" class="english">Fashion Photo Retouch</option>
+                    <option value="product" class="japanese">商品写真レタッチ</option>
+                    <option value="product" class="english">Product Photo Retouch</option>
+                    <option value="other" class="japanese">その他</option>
+                    <option value="other" class="english">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message" class="japanese">メッセージ</label>
+                <label for="message" class="english">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="japanese">送信</button>
+              <button type="submit" class="english">Submit</button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <h3 class="japanese">その他の連絡方法</h3>
+            <h3 class="english">Other Contact Methods</h3>
+            <p class="japanese">電話: 03-1234-5678</p>
+            <p class="english">Phone: 03-1234-5678</p>
+            <p class="japanese">メール: info@beautyphotographer.example.com</p>
+            <p class="english">Email: info@beautyphotographer.example.com</p>
+            <p class="japanese">住所: 〒100-0001 東京都千代田区千代田1-1-1</p>
+            <p class="english">Address: 1-1-1 Chiyoda, Chiyoda-ku, Tokyo 100-0001</p>
+          </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="japanese">&copy; 2024 Sunlit Life. All rights reserved.</p>
+        <p class="english">&copy; 2024 Sunlit Life. All rights reserved.</p>
+    </footer>
+
+    <script src="js/contact-script.js"></script>
+</body>
+</html>
