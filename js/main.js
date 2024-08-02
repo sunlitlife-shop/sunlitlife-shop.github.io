@@ -19,17 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = `./assets/images/${item.category}/${item.filename}`;
         img.alt = item.filename.split('.')[0];
         
+        const overlay = document.createElement('div');
+        overlay.className = 'portfolio-overlay';
+        overlay.innerHTML = '<span>View</span>';
+        
         innerDiv.appendChild(img);
+        innerDiv.appendChild(overlay);
         div.appendChild(innerDiv);
-
-        // Add click event to open modal
+    
         div.addEventListener('click', () => {
             openModal(img.src);
         });
-
+    
         return div;
     }
-
     function openModal(imgSrc) {
         modalImg.src = imgSrc;
         modal.style.display = 'flex';
