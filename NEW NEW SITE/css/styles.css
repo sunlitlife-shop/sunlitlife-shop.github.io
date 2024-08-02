@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+
+
 body {
-    font-family: 'Poppins', sans-serif;
+	font-family: Bodoni MT,Didot,Didot LT STD,Hoefler Text,Garamond,Times New Roman,serif; 
+    font-weight: 300;
     line-height: 1.6;
-    color: #000;
+    color: #14453d;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #fcf9f4
 }
 
 nav {
@@ -21,15 +24,73 @@ header {
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    color: #14453d;
+    font-size: 8vw;
+    margin-bottom: -5vw;
 }
 
 h2 {
-    font-size: 1.2rem;
+    color: #14453d;
+
+    font-size: 3vw;
     font-weight: normal;
     margin-bottom: 2rem;
 }
+
+li {
+    list-style-type: none;
+}
+
+li a[href="contact.html"] {
+    list-style-type: none;
+    color: #14453d;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none; /* Remove underline */
+}
+
+li a[href="contact.html"]:hover{
+    background-color: #14453d;
+    color: white;
+    transition: background-color 0.3s ease;
+
+}
+
+#contact-page a {
+    font-size: 4vw;
+    writing-mode: vertical-rl;
+    position: absolute;
+    top: 10vw;
+    right: 2vw;
+}
+
+hr {
+    margin: 1.5em auto;
+    position: relative;
+    height: 9px;
+    width: 9px;
+    border: transparent;
+    overflow: visible;
+    background-image: url('data:image/svg+xml;utf8,<svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg"><rect x="0.75" y="0.5" width="8" height="8" rx="4" fill="%231CB0A8" /></svg>');
+    
+    &:before {
+      position: absolute;
+      height: 9px;
+      width: 10px;
+      content: '';
+      background-image: url('data:image/svg+xml;utf8,<svg width="10" height="9" viewBox="0 0 10 9" xmlns="http://www.w3.org/2000/svg"><path d="M3.91043 1.29752C4.30449 0.688518 5.19551 0.688519 5.58957 1.29752L9.25143 6.95675C9.68196 7.62211 9.20436 8.5 8.41186 8.5H1.08814C0.29564 8.5 -0.181954 7.62211 0.248574 6.95675L3.91043 1.29752Z" fill="%23FCB643" /></svg>');
+      left: -18px;
+    }
+    
+    &:after {
+      position: absolute;
+      height: 9px;
+      width: 9px;
+      content: '';
+      background-image: url('data:image/svg+xml;utf8,<svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg"><rect x="0.75" y="0.5" width="8" height="8" rx="1" fill="%23EF4056" /></svg>');
+      right: -18px;    
+    }
+  }
 
 #menu-container {
     position: relative;
@@ -53,7 +114,7 @@ h2 {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #fcf9f4;
     pointer-events: none;
     opacity: 0;
 }
@@ -66,16 +127,16 @@ h2 {
 }
 
 #menu li:hover, #menu li.current-filter {
-    background-color: #f0f0f0;
+    background-color: #e6f6e5;
 }
 
 #menu li.current-filter {
-    background-color: #000;
+    background-color: #14453d;
     color: #fff;
 }
 
 #menu li.active {
-    background-color: #000;
+    background-color: #14453d;
     color: #fff;
 }
 
@@ -136,11 +197,13 @@ h2 {
 }
 
 .portfolio-item.visible {
+    
     opacity: 1;
     transform: scale(1);
 }
 
 .modal {
+    
     display: flex;
     position: fixed;
     z-index: 1000;
