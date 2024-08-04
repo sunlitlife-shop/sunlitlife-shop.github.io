@@ -19,12 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = `./assets/images/${item.category}/${item.filename}`;
         img.alt = item.filename.split('.')[0];
         
-        const overlay = document.createElement('div');
-        overlay.className = 'portfolio-overlay';
-        overlay.innerHTML = '<span>View</span>';
-        
         innerDiv.appendChild(img);
-        innerDiv.appendChild(overlay);
         div.appendChild(innerDiv);
     
         div.addEventListener('click', () => {
@@ -33,9 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
         return div;
     }
+
     function openModal(imgSrc) {
         modalImg.src = imgSrc;
         modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
         setTimeout(() => {
             modal.classList.add('show');
         }, 10);
@@ -43,9 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeModal() {
         modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
         setTimeout(() => {
             modal.style.display = 'none';
-        }, 300); // Wait for transition to complete
+        }, 300);
     }
 
     function loadPortfolioItems() {
@@ -69,18 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateMenuSize() {
-        menuContainer.style.width = `${menuButton.offsetWidth}px`;
-    }
-
-    function expandMenu() {
-        menuContainer.style.width = `${menu.offsetWidth}px`;
-    }
-    function updateMenuSize() {
         const containerWidth = menuContainer.offsetWidth;
         const buttonWidth = menuButton.offsetWidth;
         const buttonMargin = (containerWidth - buttonWidth) / 2;
         menuContainer.style.width = `${containerWidth}px`;
         menuButton.style.marginLeft = `${buttonMargin}px`;
+    }
+
+    function expandMenu() {
+        menuContainer.style.width = `${menu.offsetWidth}px`;
     }
 
     function contractMenu() {
@@ -93,7 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (menuButton.textContent == 'Photo Retouching') {
             menuContainer.style.width = `180px`;
         }
+    }
 
+    function toggleMenu() {
+        menu.classList.toggle('show');
+        menuButton.classList.toggle('active');
     }
 
     menuContainer.addEventListener('mouseenter', expandMenu);
@@ -101,6 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
         contractMenu();
         console.log('menuContainer size = ', menuContainer.style.width);
         menuButton.textContent = menuButton.textContent; // Trigger reflow to ensure correct size calculation
+    });
+
+    menuButton.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            toggleMenu();
+        }
     });
 
     menuItems.forEach(item => {
@@ -119,19 +124,47 @@ document.addEventListener('DOMContentLoaded', () => {
             menuItems.forEach(i => i.classList.remove('current-filter'));
             item.classList.add('current-filter');
             
-            updateMenuSize();
+            if (window.innerWidth <= 768) {
+                toggleMenu();
+            } else {
+                updateMenuSize();
+            }
         });
     });
 
     closeButton.onclick = closeModal;
-    window.onclick = (event) => {
+    modal.onclick = (event) => {
         if (event.target === modal) {
             closeModal();
         }
     };
 
+    // Close modal on swipe down (for mobile)
+    let touchstartY = 0;
+    let touchendY = 0;
+
+    modal.addEventListener('touchstart', (e) => {
+        touchstartY = e.changedTouches[0].screenY;
+    }, false);
+
+    modal.addEventListener('touchend', (e) => {
+        touchendY = e.changedTouches[0].screenY;
+        if (touchendY > touchstartY) {
+            closeModal();
+        }
+    }, false);
+
     loadPortfolioItems();
     updateMenuSize();
 
-    window.addEventListener('resize', updateMenuSize);
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            updateMenuSize();
+            menu.classList.remove('show');
+            menuButton.classList.remove('active');
+        } else {
+            menuContainer.style.width = '100%';
+            menuButton.style.marginLeft = '0';
+        }
+    });
 });
